@@ -6,17 +6,40 @@
             <div class="mb-4 grid grid-cols-2 gap-4">
                 <div>
                     <div class="mb-1 font-semibold">Search</div>
-                    <x-text-input name="search" value="" placeholder="Search for any text"></x-text-input>
+                    <x-text-input name="search" value="{{ request('search') }}"
+                        placeholder="Search for any text"></x-text-input>
                 </div>
                 <div>
                     <div class="mb-1 font-semibold">Salary</div>
                     <div class="flex space-x-2">
-                        <x-text-input name="min_salary" value="" placeholder="From"></x-text-input>
-                        <x-text-input name="max_salary" value="" placeholder="To"></x-text-input>
+                        <x-text-input name="min_salary" value="{{ request('min_salary') }}"
+                            placeholder="From"></x-text-input>
+                        <x-text-input name="max_salary" value="{{ request('max_salary') }}"
+                            placeholder="To"></x-text-input>
                     </div>
                 </div>
-                <div>3</div>
-                <div>4</div>
+                <div>
+                    <div class="mb-1 font-semibold">Experience</div>
+                    <label for="experience" class="mb-1 flex items-center">
+                        <input type="radio" name="experience" value="" @checked(!request(''))>
+                        <span class="ml-2">All</span>
+                    </label>
+                    <label for="experience" class="mb-1 flex items-center">
+                        <input type="radio" name="experience" value="entry" @checked('entry' === request('experience'))>
+                        <span class="ml-2">Entry</span>
+                    </label>
+                    <label for="experience" class="mb-1 flex items-center">
+                        <input type="radio" name="experience" value="intermediate" @checked('intermediate' === request('experience'))>
+                        <span class="ml-2">Intermediate</span>
+                    </label>
+                    <label for="experience" class="mb-1 flex items-center">
+                        <input type="radio" name="experience" value="senior" @checked('senior' === request('experience'))>
+                        <span class="ml-2">Senior</span>
+                    </label>
+                </div>
+                <div>
+                    <div class="mb-1 font-semibold">Category</div>
+                </div>
             </div>
             <button class="w-full">Filter</button>
         </form>
