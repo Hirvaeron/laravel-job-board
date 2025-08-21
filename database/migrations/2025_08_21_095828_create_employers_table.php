@@ -31,7 +31,11 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('offered_jobs', function (Blueprint $table) {
-            $table->dropForeignIdFor(\App\Models\Employer::class);
+            // először a constraint
+            $table->dropForeign(['employer_id']);
+
+            // aztán maga az oszlop
+            $table->dropColumn('employer_id');
         });
         Schema::dropIfExists('employers');
     }
