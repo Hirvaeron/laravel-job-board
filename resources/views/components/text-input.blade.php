@@ -23,8 +23,7 @@
             'pr-8' => $formRef,
             'ring-slate-300' => !$errors->has($name),
             'ring-red-300' => $errors->has($name),
-        ])>
-            {{ old($name, $value) }}
+        ])>{{ old($name, $value) }}
         </textarea>
     @endif
 
